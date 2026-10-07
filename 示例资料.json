@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "personal": {
+    "name": "张小禾",
+    "englishName": "Alex Zhang",
+    "surname": "",
+    "givenName": "",
+    "gender": "女",
+    "birthDate": "2000-06-18",
+    "phone": "13800000000",
+    "email": "alex@example.com",
+    "city": "上海",
+    "address": "上海市某区示例路 100 号",
+    "postalCode": "",
+    "hometown": "",
+    "hukou": "",
+    "nationality": "中国",
+    "ethnicity": "",
+    "politicalStatus": "",
+    "maritalStatus": "",
+    "highestDegree": "",
+    "idNumber": "",
+    "wechat": "",
+    "github": "",
+    "linkedin": "",
+    "website": "https://example.com"
+  },
+  "career": {
+    "position": "前端开发工程师",
+    "city": "上海",
+    "industry": "",
+    "salary": "面议",
+    "availability": "两周内",
+    "employmentType": "全职",
+    "experience": "2 年",
+    "status": ""
+  },
+  "education": [
+    {
+      "school": "示例大学",
+      "major": "计算机科学与技术",
+      "degree": "本科",
+      "startDate": "2018-09",
+      "endDate": "2022-06",
+      "gpa": "3.7 / 4.0",
+      "ranking": "",
+      "courses": "数据结构、数据库、软件工程",
+      "honors": "",
+      "description": "参与校园开源项目。"
+    },
+    {
+      "school": "示例理工大学",
+      "major": "软件工程",
+      "degree": "硕士",
+      "startDate": "2022-09",
+      "endDate": "2024-06",
+      "gpa": "",
+      "ranking": "",
+      "courses": "",
+      "honors": "",
+      "description": "研究 Web 应用性能优化。"
+    }
+  ],
+  "work": [
+    {
+      "company": "示例科技有限公司",
+      "department": "产品研发部",
+      "position": "前端开发工程师",
+      "startDate": "2024-07",
+      "endDate": "至今",
+      "city": "上海",
+      "description": "负责业务页面开发与组件维护。\n与设计、后端协作交付产品功能。",
+      "achievements": "优化首屏加载，减少重复开发。",
+      "reasonForLeaving": ""
+    }
+  ],
+  "projects": [
+    {
+      "name": "团队知识库",
+      "role": "前端负责人",
+      "startDate": "2025-03",
+      "endDate": "2025-08",
+      "url": "",
+      "description": "面向团队的文档检索与知识分享工具。",
+      "responsibilities": "负责页面架构、编辑器集成和性能优化。",
+      "achievements": "",
+      "technologies": "TypeScript、React、Node.js"
+    }
+  ],
+  "languages": [
+    {
+      "language": "英语",
+      "proficiency": "熟练",
+      "certificate": "CET-6",
+      "score": "580"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "软件设计师",
+      "issuer": "示例颁发机构",
+      "date": "2023-11",
+      "number": "",
+      "description": ""
+    }
+  ],
+  "overview": {
+    "summary": "拥有 Web 开发经验，关注用户体验与代码质量。",
+    "skills": "JavaScript / TypeScript / React / CSS",
+    "selfEvaluation": "沟通清晰，能独立推进任务并持续学习。",
+    "coverLetter": "",
+    "other": ""
+  },
+  "family": [
+    {
+      "relationship": "父亲",
+      "name": "张示例",
+      "gender": "男",
+      "birthDate": "1972-05-16",
+      "age": "54",
+      "politicalStatus": "群众",
+      "degree": "本科",
+      "occupation": "在职",
+      "company": "示例制造有限公司",
+      "position": "工程师",
+      "companyAndPosition": "",
+      "phone": "13900000001",
+      "email": "",
+      "address": "上海市示例地址",
+      "notes": "虚构示例，请替换为实际资料。"
+    },
+    {
+      "relationship": "母亲",
+      "name": "李示例",
+      "gender": "女",
+      "birthDate": "1974-09-08",
+      "age": "52",
+      "politicalStatus": "群众",
+      "degree": "大专",
+      "occupation": "在职",
+      "company": "示例服务有限公司",
+      "position": "行政专员",
+      "companyAndPosition": "",
+      "phone": "13900000002",
+      "email": "",
+      "address": "上海市示例地址",
+      "notes": ""
+    }
+  ],
+  "custom": [
+    {
+      "label": "每周可实习天数",
+      "aliases": "每周出勤天数,可实习天数",
+      "value": "4 天"
+    }
+  ]
+}

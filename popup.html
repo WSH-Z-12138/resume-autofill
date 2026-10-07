@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>简历速填</title><link rel="stylesheet" href="styles.css"><script src="shared/profile.js" defer></script><script src="popup.js" defer></script></head>
+<body class="popup-page">
+  <header class="popup-header"><div class="brand"><span class="brand-icon">R<span>↗</span></span><span>简历速填<small>RESUME KIT</small></span></div><button id="edit" class="text-button">编辑资料 ↗</button></header>
+  <section class="profile-summary"><span id="avatar" class="avatar">人</span><div><b id="profile-name">我的简历</b><p id="profile-meta">正在读取资料…</p></div><span class="subtle-badge">仅本机</span></section>
+  <p class="popup-intro">在申请页面扫描字段，核对后一次填入。<br>多段经历请先在网页添加对应的空白行。</p>
+  <button id="scan" class="primary scan-button">扫描当前页面</button>
+  <label class="overwrite-option"><input id="overwrite" type="checkbox">允许覆盖网页已有内容（更改后需重新扫描）</label>
+  <section id="preview" hidden><div class="preview-heading"><h2 id="preview-count">填写预览</h2><label><input id="select-all" type="checkbox">全选可填项</label></div><div id="preview-list" class="preview-list"></div><button id="fill" class="primary fill-button">填入勾选项</button></section>
+  <p id="status" class="popup-status" role="status" hidden></p>
+  <div class="popup-secondary"><button id="manual">手动指定字段</button><button id="undo">撤销本页填写</button></div>
+  <footer class="popup-footer">填写后请核对内容，再自行提交申请。</footer>
+</body></html>

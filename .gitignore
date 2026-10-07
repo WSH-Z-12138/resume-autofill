@@ -1,0 +1,10 @@
+tests/.artifacts/
+node_modules/
+.env
+.env.*
+!.env.example
+我的简历资料*.json
+个人资料*.json
+*.local.json
+*.zip
+__pycache__/
