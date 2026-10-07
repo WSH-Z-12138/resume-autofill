@@ -1,12 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "简历速填 · ResumeKit",
-  "version": "1.1.0",
-  "description": "在本机管理简历资料，预览并填写招聘网页；支持多段经历和手动字段映射。",
+  "name": "简历速填 + 投递簿 · ResumeKit",
+  "version": "2.0.0",
+  "description": "自动填写简历，核对后提交申请并记录结果；内置本地投递簿、状态跟进和导出备份。",
   "minimum_chrome_version": "109",
   "permissions": ["storage", "activeTab", "scripting"],
   "background": { "service_worker": "background.js" },
-  "action": { "default_popup": "popup.html", "default_title": "简历速填" },
+  "action": { "default_popup": "popup.html", "default_title": "简历速填 + 投递簿" },
   "options_page": "options.html",
   "content_security_policy": { "extension_pages": "script-src 'self'; object-src 'none'; connect-src 'none'" }
 }

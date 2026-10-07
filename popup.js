@@ -1,6 +1,25 @@
 "use strict";
 const q = selector => document.querySelector(selector);
 let tabId = null, rows = [], busy = false, scannedOverwrite = false;
+let job = null;
+async function tracker(action, extra = {}) {
+  const response = await chrome.runtime.sendMessage({ type: "rk:tracker", action, ...extra });
+  if (!response?.ok) throw new Error(response?.error || "投递簿暂时不可用。"); return response.data;
+}
+async function recorder(method) {
+  if (tabId === null) {
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (!tab?.id || !/^https?:/i.test(tab.url || "")) throw new Error("请切换到 HTTP 或 HTTPS 招聘网页。");
+    tabId = tab.id;
+  }
+  await chrome.scripting.executeScript({ target: { tabId }, files: ["recorder.js"] });
+  const results = await chrome.scripting.executeScript({ target: { tabId }, func: async name => {
+    try { return { data: await globalThis.ResumeRecorder[name]() }; } catch (err) { return { error: err.message }; }
+  }, args: [method] });
+  const result = results[0]?.result;
+  if (!result || result.error) throw new Error(result?.error || "页面已切换，请到投递簿查看提交结果。");
+  return result.data;
+}
 function status(text, error = false) { q("#status").hidden = !text; q("#status").textContent = text; q("#status").classList.toggle("error", error); }
 async function run(method, args, needInit = true) {
   if (tabId === null) {
@@ -25,10 +44,11 @@ function readableError(err) {
 }
 async function action(fn) {
   if (busy) return; busy = true;
-  for (const id of ["scan", "manual", "undo", "fill"]) q(`#${id}`).disabled = true;
+  for (const id of ["scan", "manual", "undo", "fill", "prepare", "arm", "submit"]) q(`#${id}`).disabled = true;
   try { await fn(); } catch (err) { status(readableError(err), true); }
-  finally { busy = false; for (const id of ["scan", "manual", "undo"]) q(`#${id}`).disabled = false; updateFill(); }
+  finally { busy = false; for (const id of ["scan", "manual", "undo", "prepare", "arm"]) q(`#${id}`).disabled = false; updateFill(); updateSubmit(); }
 }
+function updateSubmit() { q("#submit").disabled = busy || !job || !q("#reviewed").checked || !q("#job-company").value.trim() || !q("#job-role").value.trim(); }
 function updateFill() {
   const count = q("#preview-list").querySelectorAll('input:checked:not(:disabled)').length;
   q("#fill").textContent = `填入勾选项${count ? `（${count}）` : ""}`; q("#fill").disabled = busy || !count;
@@ -48,6 +68,28 @@ function renderRows() {
   q("#select-all").checked = false; updateFill();
 }
 q("#edit").onclick = () => chrome.runtime.openOptionsPage();
+q("#open-tracker").onclick = () => chrome.tabs.create({ url: chrome.runtime.getURL("tracker.html") });
+q("#prepare").onclick = () => action(async () => {
+  tabId = null; job = await recorder("metadata");
+  q("#preview").hidden = true;
+  q("#job-company").value = job.company; q("#job-role").value = job.role; q("#job-location").value = job.location;
+  q("#reviewed").checked = false; q("#delivery-editor").hidden = false;
+  q("#submit-hint").textContent = job.submitButtons === 1 ? "识别到 1 个提交按钮。请先检查招聘网页及岗位信息。" : "未找到唯一的提交按钮。你可以在网页手动提交，插件继续记录。";
+  status("请核对公司、岗位和网页填写内容。开启记录后，30 分钟内有效。");
+  q("#delivery-editor").scrollIntoView({ block: "nearest" });
+});
+async function arm() {
+  if (!job) throw new Error("请先识别岗位。");
+  const record = { ...job, company: q("#job-company").value, role: q("#job-role").value, location: q("#job-location").value, resumeVersion: q("#job-resume").value, status: "saved" };
+  await tracker("arm", { tabId, record, expectedUrl: job.jobUrl }); await recorder("resume");
+}
+q("#arm").onclick = () => action(async () => { await arm(); status("已开启本页自动记录。请在网页点击最终提交按钮；成功后可打开“我的投递簿”查看。跨域跳转或无法识别的提示需手动确认。"); });
+q("#submit").onclick = () => action(async () => {
+  if (!q("#reviewed").checked) throw new Error("请先核对并勾选提交确认。");
+  await arm(); await recorder("submit"); status("已经尝试提交，正在记录网站结果。请到投递簿查看；待确认记录需要核对实际投递情况。");
+});
+q("#reviewed").onchange = updateSubmit;
+for (const id of ["job-company", "job-role"]) q(`#${id}`).oninput = updateSubmit;
 q("#scan").onclick = () => action(async () => {
   tabId = null; q("#preview").hidden = true; status("正在识别页面字段…");
   scannedOverwrite = q("#overwrite").checked;

@@ -1,11 +1,12 @@
 {
   "name": "local-resume-kit",
   "private": true,
-  "version": "1.1.0",
-  "description": "No-build, offline-first resume autofill browser extension",
+  "version": "2.0.0",
+  "description": "Offline-first resume autofill and application tracking browser extension",
   "scripts": {
-    "test": "node --test tests/matcher.test.cjs",
+    "test": "node --test tests/matcher.test.cjs tests/applications.test.cjs",
     "test:browser": "node tests/browser.test.cjs",
-    "test:extension": "node tests/extension.test.cjs"
+    "test:extension": "node tests/extension.test.cjs",
+    "test:tracker": "node tests/tracker.test.cjs"
   }
 }

@@ -7,7 +7,7 @@ async function testPopupPipeline(chromium, url) {
   // grants only localhost so the real popup/scripting/isolated-world pipeline can run.
   const fixture = path.join(__dirname, ".artifacts", "granted-extension");
   fs.mkdirSync(path.join(fixture, "shared"), { recursive: true });
-  for (const file of ["background.js", "content.js", "options.html", "options.js", "popup.html", "popup.js", "styles.css", "shared/profile.js", "shared/matcher.js"]) fs.copyFileSync(path.join(root, file), path.join(fixture, file));
+  for (const file of ["background.js", "content.js", "recorder.js", "tracker.html", "tracker.js", "tracker.css", "options.html", "options.js", "popup.html", "popup.js", "styles.css", "shared/profile.js", "shared/matcher.js", "shared/applications.js"]) fs.copyFileSync(path.join(root, file), path.join(fixture, file));
   const manifest = JSON.parse(fs.readFileSync(path.join(root, "manifest.json"), "utf8"));
   manifest.host_permissions = ["http://127.0.0.1/*"];
   fs.writeFileSync(path.join(fixture, "manifest.json"), JSON.stringify(manifest));

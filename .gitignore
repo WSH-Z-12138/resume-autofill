@@ -6,5 +6,8 @@ node_modules/
 我的简历资料*.json
 个人资料*.json
 *.local.json
+投递簿备份*.json
+投递簿-*.csv
 *.zip
+!downloads/resumekit-v2.0.0.zip
 __pycache__/

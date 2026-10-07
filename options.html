@@ -7,9 +7,9 @@
     <div class="local-note"><span class="status-dot"></span>资料留在本机<small>无需账号 · 无需 API Key</small></div>
   </aside>
   <main class="workspace">
-    <header class="topbar"><div class="breadcrumb">个人工作台 <span>/</span> 资料管理</div><div class="top-actions"><span id="save-status" role="status">正在读取…</span><button id="save" class="primary">保存资料</button></div></header>
+    <header class="topbar"><div class="breadcrumb">个人工作台 <span>/</span> 资料管理</div><div class="top-actions"><a href="tracker.html" style="color:#176e56;font-size:12px;text-decoration:none">我的投递簿 ↗</a><span id="save-status" role="status">正在读取…</span><button id="save" class="primary">保存资料</button></div></header>
     <div class="page-content">
-      <div class="page-heading"><div><div class="eyebrow">FILL ONCE. APPLY AGAIN.</div><h1>把时间留给机会。</h1><p>整理一次简历资料，在不同招聘网页里重复使用。</p></div><span class="version-tag">本地版 v1.1</span></div>
+      <div class="page-heading"><div><div class="eyebrow">FILL ONCE. APPLY AGAIN.</div><h1>把时间留给机会。</h1><p>整理一次简历资料，在不同招聘网页里重复使用。</p></div><span class="version-tag">整合版 v2.0</span></div>
       <div class="guide-strip"><div><b>1</b><span>录入并保存资料</span></div><span class="guide-arrow">→</span><div><b>2</b><span>打开招聘申请页面</span></div><span class="guide-arrow">→</span><div><b>3</b><span>点击插件，预览后填入</span></div></div>
       <section class="editor-card" aria-labelledby="section-title">
         <div class="card-heading"><div><span id="section-kicker" class="eyebrow">PROFILE</span><h2 id="section-title">基本信息</h2><p id="section-description"></p></div><span id="field-count" class="subtle-badge"></span></div>
@@ -20,7 +20,7 @@
         <section class="utility-card"><h3>先试一次，再开始</h3><p>使用虚构示例熟悉编辑和填表流程。自定义字段可补充任何没有预设的内容。</p><div class="button-row"><button id="sample">载入示例资料</button><button id="guide">使用说明</button></div></section>
       </div>
       <details class="mapping-settings"><summary>网页对应关系管理</summary><p>手动指定的对应关系会按网站及页面路径保存。删除或调整经历顺序时，该分类的对应关系会在保存后失效，以避免填错经历。</p><div class="button-row"><span id="mapping-count"></span><button id="clear-mappings" class="danger-quiet">清除已记住的网页对应关系</button></div></details>
-      <footer>填写后请核对网页内容，再自行提交申请。复杂下拉框、验证码和附件需要手动处理。</footer>
+      <footer>填写后请核对网页内容，在插件中选择“一键提交并记录”，或开启记录后自行提交。复杂下拉框、验证码和附件需要手动处理。</footer>
     </div>
   </main>
   <dialog id="guide-dialog"><div class="dialog-content"><h2>从这里开始</h2><ol><li>在左侧录入个人资料；教育、工作、项目等可以添加多段，顺序应与网页一致。</li><li>点击右上角“保存资料”。</li><li>打开招聘网页，先展开经历模块，添加足够的空白经历行。</li><li>点击浏览器工具栏中的“简历速填”，选择“扫描当前页面”，核对预览，点击“填入勾选项”。</li><li>识别不到的字段，点“手动指定字段”，选择资料，再点击网页输入框，填入并记住。</li><li>分步骤表单每进入下一步，重新扫描。自定义下拉、日期弹层可复制内容后手动选择。</li></ol><p>仅在点击插件后访问当前网页；资料使用浏览器本地扩展存储，不上传到服务器。填入网页后，该网站可读取内容。卸载插件会清除本地资料，请先导出备份。</p><p>当前支持标准表单、可访问的同源 iframe 和开放的 Shadow DOM。跨域 iframe、关闭的 Shadow DOM 及部分复杂组件需要针对具体网站适配。</p><button id="close-guide" class="primary">开始使用</button></div></dialog>
